@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link, Outlet} from 'react-router-dom';
+import {CustomButton} from "../components/CustomButton";
+import {ReactComponent as AddIcon} from "../icons/add.svg";
 
 const notes = [
     {
@@ -52,9 +54,8 @@ export const Notes = () => {
                 <h1 className='notes__title'>
                     Заметки
                 </h1>
-                <button>
-                    Добавить заметку
-                </button>
+                <CustomButton startIcon={<AddIcon />} title='Добавить заметку'/>
+
             </div>
             <div className='notes__notes-layout'>
                 {notes &&
