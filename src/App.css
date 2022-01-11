@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+.app-wrapper {
+    background-color: #E5E5E5;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: #1F242A;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-header {
+    box-shadow: 8px 8px 16px 4px rgba(133, 139, 146, 0.06);
+    width: calc(100% - 2px);
+    height: 80px;
+    background-color: #FFFFFF;
+    z-index: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.page-content-wrapper {
+    background-color: #FFFFFF;
+    width: 1200px;
+    height: calc(100% - 80px);
+    padding: 0 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.notes__header-layout {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
 }
 
-.App-link {
-  color: #61dafb;
+.notes__notes-layout{
+    display: grid;
+    margin-top: 80px;
+    /*grid-template-columns: minmax(100px, 1fr);*/
+    grid-template-columns: repeat(4, auto);
+    gap: 20px
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.notes__card-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    min-height: 110px;
+    box-sizing: border-box;
+}
+
+.notes__card-layout:hover {
+    background-color: aquamarine;
+    cursor: pointer;
+}
+
+.notes__title {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 140%;
+    color: #333333;
+}
+
+.notes__card-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #1F242A;
+}
+
+.notes__card-subtitle {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 110%;
+    color: #A1A4B5;
+}
+
+.link__reset {
+    text-decoration: none;
 }
