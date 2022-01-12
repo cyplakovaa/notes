@@ -3,7 +3,7 @@ import React from 'react';
 export const NotFound = () => {
     return (
         <div>
-            sdf
+            Страница не найдена
         </div>
     );
 };

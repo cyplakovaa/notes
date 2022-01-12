@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@mui/material";
+import {Dialog} from "@mui/material";
 import '../App.css'
 import styled from "@emotion/styled";
 import {ReactComponent as CloseIcon} from "../icons/close.svg";
@@ -31,9 +31,7 @@ const defaultFormValues = {
 export const CreateOrEditNoteModal: React.FC<CreateOrEditNoteModalProps> = (props) => {
 
     const { control, handleSubmit, formState } = useForm({defaultValues: defaultFormValues});
-
     const dispatch = useDispatch()
-
 
     const onSubmit = (data: typeof defaultFormValues) => {
 

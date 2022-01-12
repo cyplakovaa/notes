@@ -52,7 +52,7 @@ const initialState: NoteModel[] = [
     }
 ];
 
-const todoItems = (
+const NoteItems = (
     state: NoteModel[] = initialState,
     action: NotesActionTypes
 ): NoteModel[] => {
@@ -61,7 +61,6 @@ const todoItems = (
             return [
                 ...state,
                 {...action.noteInfo },
-                // { id: Number(Math.random().toFixed(10)), title: action.noteInfo.title, subTitle: '1 января 2021', comment: action.noteInfo.comment },
             ];
         case EDIT_NOTE:
             return state.map((note: NoteModel) =>
@@ -74,4 +73,5 @@ const todoItems = (
     }
     return state;
 };
-export default todoItems;
+
+export default NoteItems;

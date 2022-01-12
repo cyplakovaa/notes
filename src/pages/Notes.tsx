@@ -19,7 +19,6 @@ export const Notes = () => {
         setOpenCreateModal(false);
     };
 
-
     return (
         <>
             <div className='notes__header-layout'>
