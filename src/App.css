@@ -148,3 +148,10 @@
     color: #1F242A;
     margin-bottom: 60px;
 }
+
+.form__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+}
