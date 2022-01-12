@@ -33,6 +33,7 @@ export const CustomTextField = forwardRef<HTMLDivElement, any>((props, ref) => {
     return (
         <CssTextField
             {...props}
+
             error={props?.error}
             helperText={props?.helperText}
             variant='outlined'

@@ -5,7 +5,6 @@ import styled from "@emotion/styled";
 import {ReactComponent as CloseIcon} from "../icons/close.svg";
 import {Controller, useForm} from "react-hook-form";
 import {CustomTextField} from "./CustomTextFild";
-import {ReactComponent as AddIcon} from "../icons/add.svg";
 import {CustomButton} from "./CustomButton";
 import {NoteModel} from "../redux/types";
 import {useDispatch} from "react-redux";
@@ -28,9 +27,10 @@ const defaultFormValues = {
     comment: ''
 }
 
+
 export const CreateOrEditNoteModal: React.FC<CreateOrEditNoteModalProps> = (props) => {
 
-    const { control, handleSubmit } = useForm({defaultValues: defaultFormValues});
+    const { control, handleSubmit, formState } = useForm({defaultValues: defaultFormValues});
 
     const dispatch = useDispatch()
 
@@ -60,15 +60,16 @@ export const CreateOrEditNoteModal: React.FC<CreateOrEditNoteModalProps> = (prop
                 </h2>
                 <form className='form__layout' onSubmit={handleSubmit(onSubmit)}>
                     <Controller
+                        rules={{required: 'Обязательное поле'}}
                         name="title"
                         control={control}
-
-                        render={({ field }) => <CustomTextField {...field} label='Название заметки' placeholder='Введите заголовок заметки' />}
+                        render={({ field }) => <CustomTextField {...field} error={!!formState.errors.title} helperText={formState.errors.title?.message} label='Название заметки' placeholder='Введите заголовок заметки' />}
                     />
                     <Controller
                         name="comment"
                         control={control}
-                        render={({ field }) => <CustomTextField {...field} multiline rows={3} label='Комментарий' placeholder='Введите комментарий' />}
+                        rules={{required: 'Обязательное поле'}}
+                        render={({ field }) => <CustomTextField {...field} error={!!formState.errors.comment} helperText={formState.errors.comment?.message} multiline rows={4} label='Комментарий' placeholder='Введите комментарий' />}
                     />
 
                     <CustomButton type='submit' title='Добавить' centered/>
