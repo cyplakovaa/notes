@@ -20,12 +20,10 @@ function App() {
                     <Route path="/" element={<PageWrapper/>}>
                         <Route path="notes" element={<Notes/>}/>
                         <Route path="note/:noteId" element={<NoteInfo/>}/>
+                        <Route path="*" element={<NotFound />} />
                     </Route>
-                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
-
-
         </div>
     );
 }
