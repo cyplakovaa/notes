@@ -27,12 +27,11 @@ export const Notes = () => {
                     Заметки
                 </h1>
                 <CustomButton onClick={handleClickOpen} startIcon={<AddIcon />} title='Добавить заметку'/>
-
             </div>
             <div className='notes__notes-layout'>
                 {notes &&
                     notes.map(note => (
-                        <Link to={'/note/' + note.id} className='link__reset'>
+                        <Link key={note.id} to={'/note/' + note.id} className='link__reset'>
                             <div className='notes__card-layout'>
                                 <h3 className='notes__card-title'>
                                     {note.title}

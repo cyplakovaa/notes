@@ -6,8 +6,9 @@ import {ReactElement} from "react";
 interface CustomButtonProps {
     title: string
     startIcon?: ReactElement<any, any>
-    onClick: () => void
+    onClick?: () => void
     centered?: boolean
+    type?: "button" | "submit" | "reset" | undefined
 }
 
 const StyledButton = styled(Button)(({theme}) => ({
@@ -23,6 +24,6 @@ const StyledButton = styled(Button)(({theme}) => ({
 
 export const CustomButton: React.FC<CustomButtonProps> = (props) => {
     return (
-        <StyledButton onClick={props.onClick} variant="contained" startIcon={props.startIcon} style={{alignSelf: props.centered ? 'center' : 'auto' }} >{props.title}</StyledButton>
+        <StyledButton onClick={props.onClick} variant="contained" startIcon={props.startIcon} style={{alignSelf: props.centered ? 'center' : 'auto' }} type={props.type} >{props.title}</StyledButton>
     );
 }

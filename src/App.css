@@ -155,3 +155,12 @@
     gap: 50px;
     width: 100%;
 }
+
+.notes__subtitle-layout {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note__delete-icon:hover {
+    cursor: pointer;
+}

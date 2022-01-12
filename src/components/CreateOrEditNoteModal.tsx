@@ -7,6 +7,9 @@ import {Controller, useForm} from "react-hook-form";
 import {CustomTextField} from "./CustomTextFild";
 import {ReactComponent as AddIcon} from "../icons/add.svg";
 import {CustomButton} from "./CustomButton";
+import {NoteModel} from "../redux/types";
+import {useDispatch} from "react-redux";
+import {addNote} from "../redux/actions";
 
 interface CreateOrEditNoteModalProps {
     visible: boolean
@@ -20,11 +23,33 @@ const CustomizedDialog = styled(Dialog)(() => ({
     }
 }));
 
+const defaultFormValues = {
+    title: '',
+    comment: ''
+}
 
 export const CreateOrEditNoteModal: React.FC<CreateOrEditNoteModalProps> = (props) => {
 
-    const { control, handleSubmit } = useForm();
-    const onSubmit = (data: any) => console.log(data);
+    const { control, handleSubmit } = useForm({defaultValues: defaultFormValues});
+
+    const dispatch = useDispatch()
+
+
+    const onSubmit = (data: typeof defaultFormValues) => {
+
+        const timeElapsed = Date.now();
+        const today = new Date(timeElapsed);
+
+        const noteItem: NoteModel = {
+            id: Math.floor(Math.random() * 160000),
+            title: data.title,
+            comment: data.comment,
+            subTitle: today.toDateString()
+        }
+
+        dispatch(addNote(noteItem))
+        props.onClose()
+    };
 
     return (
         <CustomizedDialog open={props.visible} onClose={props.onClose}>
@@ -37,16 +62,16 @@ export const CreateOrEditNoteModal: React.FC<CreateOrEditNoteModalProps> = (prop
                     <Controller
                         name="title"
                         control={control}
-                        defaultValue=""
+
                         render={({ field }) => <CustomTextField {...field} label='Название заметки' placeholder='Введите заголовок заметки' />}
                     />
                     <Controller
                         name="comment"
                         control={control}
-                        defaultValue=""
                         render={({ field }) => <CustomTextField {...field} multiline rows={3} label='Комментарий' placeholder='Введите комментарий' />}
                     />
-                    <CustomButton  onClick={() => {}} title='Добавить' centered/>
+
+                    <CustomButton type='submit' title='Добавить' centered/>
                 </form>
             </div>
 
